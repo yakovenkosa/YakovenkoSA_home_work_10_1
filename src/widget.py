@@ -3,6 +3,7 @@ from src.masks import mask_account, mask_card
 
 def mask_account_card(number_string: str) -> str:
     """Функция принимает строку и маскирует номер карты или счёта"""
+    result = ""
     if len(number_string.split()[-1]) == 16:
         new_number = mask_card(number_string.split()[-1])
         result = f"{number_string[:-16]}{new_number}"
