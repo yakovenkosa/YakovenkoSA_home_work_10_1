@@ -1,13 +1,9 @@
-def get_sort_dict(
-    list_dict: list[dict[str, str]], state: str = "EXECUTED"
-) -> list[dict[str, str]]:
+def get_sort_dict(list_dict: list, state: str = "EXECUTED") -> list:
     """Функция, которая возвращает новый словарь"""
     new_list = []
     for ld in list_dict:
-        if ld["state"] == "EXECUTED":
+        if ld.get("state") == state:
             new_list.append(ld)
-        elif ld["state"] == "CANCELED":
-            continue
     return new_list
 
 
