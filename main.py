@@ -11,7 +11,11 @@ print(get_new_data("2018-07-11T02:26:18.671407"))
 print(
     get_sort_dict(
         [
-            {"id": "41428829", "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+            {
+                "id": "41428829",
+                "state": "EXECUTED",
+                "date": "2019-07-03T18:35:29.512364",
+            },
             {
                 "id": "939719570",
                 "state": "EXECUTED",
@@ -57,13 +61,26 @@ print(
 
 @log(filename="mylog.txt")
 def my_function(x, y):
+    """Функция вызова декоратора с файлом сохранения mylog.txt"""
     return x + y
+
 
 my_function(1, 2)
 
 
+@log()
+def my_function_1(x, y):
+    """Функция вызова декоратора без файла сохранения и вывод в консоль."""
+    return x + y
+
+
+my_function_1(1, 2)
+
+
 @log(filename="mylog.txt")
 def my_function_error(x, y):
+    """Функция вызова декоратора с ошибкой и сохранение вывода в файл mylog.txt"""
     return x / y
+
 
 my_function_error(1, 0)
