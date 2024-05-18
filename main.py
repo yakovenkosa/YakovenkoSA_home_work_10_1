@@ -1,5 +1,6 @@
 from src.processing import get_sort_dict, get_sort_list_date
 from src.widget import get_new_data, mask_account_card
+from src.decorators import log
 
 print(mask_account_card("MasterCard 7158300734726758"))
 
@@ -52,3 +53,17 @@ print(
         ]
     )
 )
+
+
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+
+my_function(1, 2)
+
+
+@log(filename="mylog.txt")
+def my_function_error(x, y):
+    return x / y
+
+my_function_error(1, 0)
