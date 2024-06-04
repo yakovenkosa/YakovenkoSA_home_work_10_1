@@ -1,5 +1,4 @@
 import pytest
-
 from src.processing import get_sort_dict, get_sort_list_date
 
 
