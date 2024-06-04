@@ -58,3 +58,4 @@ def test_log_console_raise(capsys):
 
     captured = capsys.readouterr()
     assert captured.out == "example_function ValueError: Что-то пошло не так. Inputs: (5, 100), {}\n"
+    
