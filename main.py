@@ -1,6 +1,10 @@
 from src.processing import get_sort_dict, get_sort_list_date
 from src.widget import get_new_data, mask_account_card
+<<<<<<< HEAD
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+=======
+from src.decorators import log
+>>>>>>> feature/homework_11_2
 
 print(mask_account_card("MasterCard 7158300734726758"))
 
@@ -11,7 +15,11 @@ print(get_new_data("2018-07-11T02:26:18.671407"))
 print(
     get_sort_dict(
         [
-            {"id": "41428829", "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+            {
+                "id": "41428829",
+                "state": "EXECUTED",
+                "date": "2019-07-03T18:35:29.512364",
+            },
             {
                 "id": "939719570",
                 "state": "EXECUTED",
@@ -54,6 +62,7 @@ print(
     )
 )
 
+<<<<<<< HEAD
 transactions = (
     [
         {
@@ -145,3 +154,31 @@ for _ in range(5):
 
 for card_number in card_number_generator(2, 12):
     print(card_number)
+=======
+
+@log(filename="mylog.txt")
+def my_function(x, y):
+    """Функция вызова декоратора с файлом сохранения mylog.txt"""
+    return x + y
+
+
+my_function(1, 2)
+
+
+@log()
+def my_function_1(x, y):
+    """Функция вызова декоратора без файла сохранения и вывод в консоль."""
+    return x + y
+
+
+my_function_1(1, 2)
+
+
+@log(filename="mylog.txt")
+def my_function_error(x, y):
+    """Функция вызова декоратора с ошибкой и сохранение вывода в файл mylog.txt"""
+    return x / y
+
+
+my_function_error(1, 0)
+>>>>>>> feature/homework_11_2
