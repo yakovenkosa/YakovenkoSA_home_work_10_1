@@ -1,9 +1,10 @@
 import os
-from src.utils import get_list_transactions
+from src.utils import get_transactions
 from src.processing import get_sort_dict, get_sort_list_date
 from src.widget import get_new_data, mask_account_card
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
-from src.decorators import log
+#from src.decorators import log
+from src.external_api import convert_to_rub
 
 
 print(mask_account_card("MasterCard 7158300734726758"))
@@ -184,5 +185,10 @@ for card_number in card_number_generator(2, 12):
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 json_file_path = os.path.join(current_dir, "data", 'operations.json')
-new_transactions = get_list_transactions(json_file_path)
+new_transactions = get_transactions(json_file_path)
 print(new_transactions)
+
+
+for transaction in new_transactions:
+    rub_amount = convert_to_rub(transaction)
+    print(f'Transaction amount in Rub: {rub_amount}')
