@@ -1,13 +1,6 @@
 import pytest
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> feature/homework_11_1
-=======
-
->>>>>>> feature/homework_11_2
 @pytest.fixture
 def number_string():
     return [
@@ -55,11 +48,7 @@ def list_dict():
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     ]
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> feature/homework_11_2
+
 
 
 @pytest.fixture
@@ -112,7 +101,3 @@ def transactions() -> list[dict]:
             "to": "Счет 14211924144426031657",
         },
     ]
-<<<<<<< HEAD
->>>>>>> feature/homework_11_1
-=======
->>>>>>> feature/homework_11_2
