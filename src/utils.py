@@ -1,7 +1,7 @@
 import json
 
 
-def get_list_transactions(file_path: str) -> list[dict]:
+def get_transactions(file_path: str) -> list[dict]:
     """ Функцию, которая принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях.
      Если файл пустой, содержит не список или не найден, функция возвращает пустой список."""
     try:
