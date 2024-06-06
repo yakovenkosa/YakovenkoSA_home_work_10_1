@@ -1,9 +1,7 @@
 import pytest
-<<<<<<< HEAD
 
-=======
 from src.masks import mask_account, mask_card
->>>>>>> feature/homework_11_1
+
 
 
 @pytest.mark.parametrize(
