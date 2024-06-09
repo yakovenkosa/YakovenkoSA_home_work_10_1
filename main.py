@@ -1,10 +1,11 @@
+import os
+from src.utils import get_transactions
 from src.processing import get_sort_dict, get_sort_list_date
 from src.widget import get_new_data, mask_account_card
-<<<<<<< HEAD
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
-=======
-from src.decorators import log
->>>>>>> feature/homework_11_2
+#from src.decorators import log
+from src.external_api import convert_to_rub
+
 
 print(mask_account_card("MasterCard 7158300734726758"))
 
@@ -62,7 +63,7 @@ print(
     )
 )
 
-<<<<<<< HEAD
+
 transactions = (
     [
         {
@@ -154,31 +155,40 @@ for _ in range(5):
 
 for card_number in card_number_generator(2, 12):
     print(card_number)
-=======
-
-@log(filename="mylog.txt")
-def my_function(x, y):
-    """Функция вызова декоратора с файлом сохранения mylog.txt"""
-    return x + y
 
 
-my_function(1, 2)
+# @log(filename="mylog.txt")
+# def my_function(x, y):
+#     """Функция вызова декоратора с файлом сохранения mylog.txt"""
+#     return x + y
+#
+#
+# my_function(1, 2)
+#
+#
+# @log()
+# def my_function_1(x, y):
+#     """Функция вызова декоратора без файла сохранения и вывод в консоль."""
+#     return x + y
+#
+#
+# my_function_1(1, 2)
+#
+#
+# @log(filename="mylog.txt")
+# def my_function_error(x, y):
+#     """Функция вызова декоратора с ошибкой и сохранение вывода в файл mylog.txt"""
+#     return x / y
+#
+#
+# my_function_error(1, 0)
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+json_file_path = os.path.join(current_dir, "data", 'operations.json')
+new_transactions = get_transactions(json_file_path)
+print(new_transactions)
 
 
-@log()
-def my_function_1(x, y):
-    """Функция вызова декоратора без файла сохранения и вывод в консоль."""
-    return x + y
-
-
-my_function_1(1, 2)
-
-
-@log(filename="mylog.txt")
-def my_function_error(x, y):
-    """Функция вызова декоратора с ошибкой и сохранение вывода в файл mylog.txt"""
-    return x / y
-
-
-my_function_error(1, 0)
->>>>>>> feature/homework_11_2
+for transaction in new_transactions:
+    rub_amount = convert_to_rub(transaction)
+    print(f'Transaction amount in Rub: {rub_amount}')
