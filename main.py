@@ -1,5 +1,5 @@
 import os
-from src.utils import get_transactions
+from src.utils import get_transactions, get_transactions_csv, get_transactions_excel
 from src.processing import get_sort_dict, get_sort_list_date
 from src.widget import get_new_data, mask_account_card
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
@@ -183,12 +183,23 @@ for card_number in card_number_generator(2, 12):
 #
 # my_function_error(1, 0)
 
+# current_dir = os.path.dirname(os.path.abspath(__file__))
+# json_file_path = os.path.join(current_dir, "data", 'operations.json')
+# new_transactions = get_transactions(json_file_path)
+# print(new_transactions)
+#
+#
+# for transaction in new_transactions:
+#     rub_amount = convert_to_rub(transaction)
+#     print(f'Transaction amount in Rub: {rub_amount}')
+
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
-json_file_path = os.path.join(current_dir, "data", 'operations.json')
-new_transactions = get_transactions(json_file_path)
-print(new_transactions)
+file_path_csv = os.path.join(current_dir, "data", "transactions.csv")
 
+print(get_transactions_csv(file_path_csv))
 
-for transaction in new_transactions:
-    rub_amount = convert_to_rub(transaction)
-    print(f'Transaction amount in Rub: {rub_amount}')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path_ex = os.path.join(current_dir, "data", 'transactions_excel.xlsx')
+
+print(get_transactions_excel(file_path_ex))
