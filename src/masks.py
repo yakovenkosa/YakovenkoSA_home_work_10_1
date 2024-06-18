@@ -1,12 +1,10 @@
 import logging
+import os
+from src.logger import setup_logger
 
-
-logger = logging.getLogger('masks')
-logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler('logs/masks.log')
-file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
-file_handler.setFormatter(file_formatter)
-logger.addHandler(file_handler)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path_1 = os.path.join(current_dir, "../logs", "masks.log")
+logger = setup_logger("masks", file_path_1)
 
 
 def mask_card(card_number: str) -> str:
